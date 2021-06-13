@@ -15,7 +15,7 @@ class Solution{
     //Function to check whether there is a subarray present with 0-sum or not.
     bool subArrayExists(int arr[], int n)
     {
-        set<int> unique_sum;
+        unordered_set<int> unique_sum;
         int s=0;
         for(int i=0; i<n; i++){
             s+=arr[i];
