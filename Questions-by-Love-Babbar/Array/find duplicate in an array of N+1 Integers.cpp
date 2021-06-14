@@ -6,21 +6,20 @@
 //------------Code--------------
 class Solution {
 public:
-    void swap(int *a, int* b){
-        int temp = *a;
-        *a = *b;
-        *b = temp;
-    }
     int findDuplicate(vector<int>& nums) {
-        for(int i=0; i<nums.size(); i++){
-            if(i == nums[i]-1) continue;
-            if(nums[nums[i]-1] == nums[i]) return nums[i];
-            else{
-                swap(&nums[i], &nums[nums[i]-1]);
-                i--;
-            }
+        int p1=0,p2=0;
+        while(1){
+            p1=nums[p1];
+            p2=nums[nums[p2]];
+            if(p1==p2) break;
         }
-        return -1;
+        p1=0;
+        while(1){
+            p1=nums[p1];
+            p2=nums[p2];
+            if(p1==p2) break;
+        }
+        return p2;
     }
 };
 
