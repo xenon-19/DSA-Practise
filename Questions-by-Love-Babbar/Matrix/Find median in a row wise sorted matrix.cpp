@@ -21,26 +21,21 @@ public:
             minn = min(minn, matrix[i][0]);
             maxx = max(maxx, matrix[i][c-1]);
         }
-        //cout << maxx << " " << minn << endl;
+        
         int mid = (minn + maxx)/2;
-        //cout << mid << endl;
+        
         int low_cnt;
-        int high_cnt;
         while(minn < maxx){
-            mid = (minn + maxx)/2;
-            //cout << maxx << " " << minn << endl;
-            //cout << mid << endl;
             low_cnt = 0;
-            high_cnt = 0;
             for(int i=0; i<r; i++){
-                low_cnt += upper_bound(matrix[i].begin(), matrix[i].end(), mid-1) - matrix[i].begin();
-                high_cnt += c - (upper_bound(matrix[i].begin(), matrix[i].end(), mid) - matrix[i].begin());
+                low_cnt += upper_bound(matrix[i].begin(), matrix[i].end(), mid) - matrix[i].begin();
             }
-            //cout << "no. of element less than mid : " << low_cnt << endl;
-            if(low_cnt <= (c*r)/2 && high_cnt <= (c*r)/2) return mid;
-            else if(low_cnt > (c*r)/2) maxx = mid - 1;
-            else minn = mid + 1;
+            if(low_cnt < (c*r)/2 + 1) minn = mid + 1;
+            else maxx = mid;
+            mid = (minn + maxx)/2;
         }
+
+        return mid;
     }
 };
 
