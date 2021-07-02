@@ -3,7 +3,7 @@ https://www.geeksforgeeks.org/a-program-to-check-if-strings-are-rotations-of-eac
 //Given a string s1 and a string s2, write a snippet to say whether s2 is a rotation of s1?
 
 //-------Code-------
-//-------O(n)
+//-------O(n^2)
 #include <iostream>
 using namespace std;
 
