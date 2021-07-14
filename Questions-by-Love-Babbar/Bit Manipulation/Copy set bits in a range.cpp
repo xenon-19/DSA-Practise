@@ -4,7 +4,7 @@
 // https://www.geeksforgeeks.org/copy-set-bits-in-a-range/
 
 //----------------Code---------------
-//---------------O(l+r)-------------
+//---------------O(32+l-r)-------------
 #include <bits/stdc++.h>
 using namespace std;
 
