@@ -4,28 +4,19 @@
 // https://www.geeksforgeeks.org/copy-set-bits-in-a-range/
 
 //----------------Code---------------
-//---------------O(32+l-r)-------------
 #include <bits/stdc++.h>
 using namespace std;
 
 //l and r are lth and rth bit from left
 void copyLtoR(int* x, int* y, int l, int r){
-      //storing different bits
-      *x = *x ^ *y;
-      //clear all bits left of l
-      //-2 to not make the number negative
-      *x = *x << l - 2;
-      *x = *x >> l - 2;
-      //clear all bits right of r
-      *x = *x >> sizeof(int)*8 - r - 1;
-      *x = *x << sizeof(int)*8 - r - 1;
-      //inverting different bits of y
-      *y = *y ^ *x;
+      int mask = 0, size = sizeof(int);
+      mask = (1<<r-l+1) - 1;
+      mask <<= size - r;
+      mask &= *x;
+      *y |= mask;
 }
 
 int main() {
-      //1237 1109 8 5
-      //here 1109 will become 1237 
 	int x, y, l, r;
 	cin >> x >> y >> l >> r;
 	copyLtoR(&x, &y, l, r);
