@@ -4,7 +4,7 @@
 // For example, the function should return 'true' for exp = “[()]{}{[()()]()}” and 'false' for exp = “[(])”.
 
 //--------Code--------
-//--------O(n)--------
+//--------O(n),O(n)--------
 // { Driver Code Starts
 #include<bits/stdc++.h>
 using namespace std;
