@@ -24,6 +24,7 @@ public:
         for(auto x: b){
             s.insert(x);
         }
+        //dp[i] stores if the string starting from i to end is breakable or not
         vector<int> dp(a.length(), 0);
         for(int i=a.length()-1; i>=0; i--){
             string temp;
