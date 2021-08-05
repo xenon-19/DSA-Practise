@@ -21,18 +21,21 @@ int main()
     }
 }
 
+// Driver Code Ends }
+
 int countRev (string s)
 {
 
     if(s.length()%2) return -1;
     
-    int curr_sum = 0, cnt = 0;
+    int curr_sum = 0, cnt = 0, last_for_2nd_loop = 0;
     unordered_map<char, int> val = {{'{', 2}, {'}', -2}};
     
     for(int i=0; i<s.length(); i++){
         int curr_val = val[s[i]];
         if(curr_sum + curr_val < 0){
             curr_sum -= curr_val;
+            last_for_2nd_loop = i;
             cnt++;
         }else{
             curr_sum += curr_val;
@@ -40,7 +43,7 @@ int countRev (string s)
     }
     
     curr_sum = 0;
-    for(int i=s.length()-1; i>=0; i--){
+    for(int i=s.length()-1; i>=last_for_2nd_loop; i--){
         int curr_val = val[s[i]];
         if(curr_sum + curr_val > 0){
             curr_sum -= curr_val;
