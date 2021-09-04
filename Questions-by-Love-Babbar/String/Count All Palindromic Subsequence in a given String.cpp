@@ -59,3 +59,51 @@ int main()
         cout<<ans<<endl;
     } 
 }  // } Driver Code Ends
+
+//--------bottom up dp-----------
+//--------O(n**2),O(n**2)--------
+
+// { Driver Code Starts
+// Counts Palindromic Subsequence in a given String
+#include<bits/stdc++.h>
+using namespace std;
+
+ // } Driver Code Ends
+
+#define mod 1000000007
+class Solution{
+    public:
+    
+    int countPS(string s) {
+        int n = s.length();
+        vector<vector<int>> dp(n, vector<int>(n, 0));
+        for(int i=0; i<=n-1; i++){
+            dp[i][i] = 1;
+        }
+        
+        for(int i=n-1; i>=0; i--){
+            for(int j=i+1; j<n; j++){
+                if(s[i]==s[j]) dp[i][j] = (dp[i+1][j] + dp[i][j-1] + 1)%mod;
+                else dp[i][j] = ((dp[i+1][j] + dp[i][j-1])%mod - dp[i+1][j-1] + mod)%mod;
+            }
+        }
+        return dp[0][n-1];
+    }
+     
+};
+
+// { Driver Code Starts.
+// Driver program
+int main()
+{
+    int t;
+    cin>>t;
+    while(t--)
+    {
+        string str;
+        cin>>str;
+        Solution ob;
+        long long int ans = ob.countPS(str);
+        cout<<ans<<endl;
+    } 
+}  // } Driver Code Ends
