@@ -17,16 +17,20 @@ public:
     
     int search(vector<int>& nums, int target) {
         n = nums.size();
-        for(int i=0; i<n-1; i++){
-            if(nums[i] > nums[i+1]){
-                pivot = i+1;
-                break;
-            }
-        }
         
-        int lo = 0, hi = n-1;
+        //finding pivot
+        int lo = 0, hi = n-1, mid = 0;
+        while(lo < hi-1){
+            mid = lo + (hi-lo)/2;
+            if(nums[lo] < nums[mid]) lo = mid;
+            else hi = mid;
+        }
+        if(nums[lo] > nums[hi]) pivot = lo+1;
+        
+        //finding target
+        lo = 0, hi = n-1;
         while(lo<hi){
-            int mid = lo + (hi-lo)/2;
+            mid = lo + (hi-lo)/2;
             if(nums[rot(mid)] < target) lo = mid+1;
             else hi = mid;
         }
