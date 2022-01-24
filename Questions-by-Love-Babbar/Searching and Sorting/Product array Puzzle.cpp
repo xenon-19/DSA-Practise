@@ -23,10 +23,12 @@ class Solution{
        long long temp = 1;
        ret[0] = 1;
        
+       //now ret[i] will store product of nums till nums[i-1]
        for(int i=1; i<n; i++){
            ret[i] = ret[i-1]*nums[i-1];
        }
        
+	//temp stores product of nums nums[i+1]...nums[n-1]
        for(int i=n-1; i>=0; i--){
            ret[i] *= temp;
            temp *= nums[i];
