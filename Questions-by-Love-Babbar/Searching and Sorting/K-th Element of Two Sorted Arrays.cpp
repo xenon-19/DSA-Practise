@@ -71,3 +71,85 @@ int main()
 	}
     return 0;
 }  // } Driver Code Ends
+
+
+//-------code 2----------
+//--------O(logk)--------
+// { Driver Code Starts
+#include <bits/stdc++.h>
+using namespace std;
+
+
+ // } Driver Code Ends
+class Solution{
+    public:
+    int kthElement(int arr1[], int arr2[], int n, int m, int k)
+    {   
+        if(n+m < k) return -1;
+        if(k==0) return -1;
+        
+        int kt = k;
+        
+        int p1=-1, p2=-1, t1=0, t2=0;
+        while(k && p1<n-1 && p2<m-1){
+            if(p1+(k+1)/2>n-1){
+                t1 = n-1;
+                t2 = kt - n - 1;
+            }else if(p2+(k+1)/2>m-1){
+                t2 = m-1;
+                t1 = kt - m - 1;
+            }
+            else{
+                t1 = p1 + (k+1)/2;
+                t2 = p2 + (k+1)/2;
+            }
+            
+            if(arr1[t1]<arr2[t2]){
+                k = k - (t1 - p1);
+                p1 = t1;  
+            } 
+            else{
+                k = k - (t2 - p2);
+                p2 = t2;
+            }
+            
+        }
+        
+      //   cout << p1 << " " << p2 << endl;
+        
+        if(p1+p2+2 != kt){
+            if(p1==n-1) p2 = kt-n-1;
+            if(p2==m-1) p1 = kt-m-1;
+        }
+        
+      //   cout << p1 << " " << p2 << endl;
+        
+        if(p1<0) return arr2[p2];
+        if(p2<0) return arr1[p1];
+        
+        return max(arr1[p1], arr2[p2]);
+        
+    }
+};
+
+// { Driver Code Starts.
+ 
+// Driver code
+int main()
+{
+	int t;
+	cin>>t;
+	while(t--){
+		int n,m,k;
+		cin>>n>>m>>k;
+		int arr1[n],arr2[m];
+		for(int i=0;i<n;i++)
+			cin>>arr1[i];
+		for(int i=0;i<m;i++)
+			cin>>arr2[i];
+		
+		Solution ob;
+        cout << ob.kthElement(arr1, arr2, n, m, k)<<endl;
+	}
+    return 0;
+}  // } Driver Code Ends
