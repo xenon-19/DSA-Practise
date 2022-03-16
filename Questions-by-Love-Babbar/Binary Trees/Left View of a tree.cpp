@@ -1,5 +1,8 @@
 // https://practice.geeksforgeeks.org/problems/left-view-of-binary-tree/1#
 
+//---------------------Code----------------------
+//----------main function -> leftView ----------- 
+
 void rec(Node* node, int &maxh, int currh, vector<int> &ans){
     currh++;
     
