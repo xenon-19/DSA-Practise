@@ -1,6 +1,6 @@
 // https://www.codingninjas.com/codestudio/problems/least-greater-element_1164266?leftPanelTab=1
 
-//-----------------O(nlogn),O(nlogn)----------------
+//-----------------O(nlogn),O(n)----------------
 //-----------------Code-----------------------
 #include <unordered_map>
 #include <bits/stdc++.h>
